@@ -3,7 +3,10 @@
 <head>
     <title>Third-Party Cookie Check</title>
     <script>
-        // Set a cookie
+        // Clear any existing testcookie
+        document.cookie = "testcookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
+        // Set a new testcookie
         document.cookie = "testcookie=1; SameSite=None; Secure";
 
         function checkCookie() {
@@ -26,7 +29,7 @@
         var result = checkCookie();
 
         // Send the result to the parent page
-        window.parent.postMessage({ 'cookieCheck': result }, '*');
+        window.parent.postMessage({ 'cookieCheck': result }, 'https://practice.keplergrp.com');
     </script>
 </head>
 <body>
